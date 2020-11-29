@@ -1,0 +1,24 @@
+.card {
+  margin-bottom: 25px;
+}
+
+.small {
+  width: 200px;
+}
+
+.medium {
+  width: 350px;
+}
+
+.large {
+  width: 500px
+}
+
+.title {
+    text-align: center;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+}
