@@ -18,5 +18,6 @@ export function useFetch(url) {
     fetchTodos();
   }, [url]);
 
-  return data;
+  return [data, setData];
+  // return data;
 }
