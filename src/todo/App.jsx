@@ -5,6 +5,10 @@ import {
 
 import axios from 'axios';
 
+import {
+  useFetch
+} from './useFetch';
+
 import styles from './App.module.css';
 
 import { TodoForm } from './TodoForm';
@@ -17,21 +21,27 @@ const useDocumentTitle = title => {
 }
 
 export function App() {
-  const [todos, setTodos] = useState(null);
-
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    const fetchTodos = async () => {
-      const result = await axios(
-        `https://jsonplaceholder.cypress.io/todos?_page=${page}`
-      );
+  const [todos, setTodos] = useFetch(`https://jsonplaceholder.cypress.io/todos?_page=${page}`);
+  
+  // ...
 
-      setTodos(result.data);
-    };
+  // fetching todos using pagination:
+  // 
+  // const [todos, setTodos] = useState(null);
+  // 
+  // useEffect(() => {
+  //   const fetchTodos = async () => {
+  //     const result = await axios(
+  //       `https://jsonplaceholder.cypress.io/todos?_page=${page}`
+  //     );
+  // 
+  //     setTodos(result.data);
+  //   };
 
-    fetchTodos();
-  }, [page]);
+  //   fetchTodos();
+  // }, [page]);
 
   // fetching todos upon component mount only:
   // 
@@ -40,10 +50,10 @@ export function App() {
   //     const result = await axios(
   //       'https://jsonplaceholder.cypress.io/todos'
   //     );
-
+  // 
   //     setTodos(result.data);
   //   };
-
+  // 
   //   fetchTodos();
   // }, []);
 
