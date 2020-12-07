@@ -6,16 +6,12 @@ import {
 } from 'react-router-dom';
 
 import {
-  connect
-} from 'react-redux';
-
-import {
   useAppContext
 } from '../AppProvider';
 
 // use this component, instead of the regular <Route> component from the React Router library, when a route is to be
 // protected (= requiring user authentication).
-let RouteGuard = ({ component: Component, ...rest }) => {
+export function RouteGuard({ component: Component, ...rest }) {
   const auth = useAppContext();
 
   return (
@@ -32,11 +28,3 @@ let RouteGuard = ({ component: Component, ...rest }) => {
     />
   );
 }
-
-RouteGuard = connect(
-  ({ auth }) => ({
-    user: auth.user
-  })
-)(RouteGuard);
-
-export { RouteGuard };
